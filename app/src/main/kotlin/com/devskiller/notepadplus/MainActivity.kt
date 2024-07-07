@@ -13,8 +13,13 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(ActivityMainBinding.inflate(layoutInflater).root)
 
-        // START YOUR CHANGE
-        // END YOUR CHANGE
+        showWelcomeFragment()
+    }
+
+    private fun showWelcomeFragment() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, WelcomeFragment.newInstance())
+            .commit()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
