@@ -14,6 +14,15 @@ object NoteLab {
         mNotes.add(note)
     }
 
+    fun updateNote(uuid: UUID) {
+        mNotes.firstOrNull { note ->
+            note.id == uuid
+        }?.let { note ->
+            mNotes.remove(note)
+            mNotes.add(note)
+        }
+    }
+
     fun getNote(uuid: UUID): Note? = mNotes.firstOrNull { note ->
         note.id == uuid
     }

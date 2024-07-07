@@ -4,24 +4,33 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.devskiller.notepadplus.databinding.ViewNoteListItemBinding
 
 class NoteAdapter(private val mNotes: List<Note>) : RecyclerView.Adapter<NoteAdapter.NoteHolder>() {
 
+    companion object {
+        private const val EXTRA_NOTE_ID = "com.devskiller.intent.note_id"
+        private const val EXTRA_EDIT_NOTE_ACTION = "com.devskiller.intent.edit_note_action"
+    }
     inner class NoteHolder(
-        val mViewBinding: ViewNoteListItemBinding
+        private val mViewBinding: ViewNoteListItemBinding
     ) : RecyclerView.ViewHolder(mViewBinding.root), View.OnClickListener {
 
         private var mNote: Note? = null
+
+        fun setNote(note: Note) {
+            mNote = note
+        }
 
         override fun onClick(view: View) {
             val context = view.context
             val intent = Intent(context, ChangeNoteActivity::class.java)
             intent.apply {
-                putExtra("id", mNote?.id)
-                putExtra("title", mNote?.title)
-                putExtra("description", mNote?.description)
+                putExtra(EXTRA_EDIT_NOTE_ACTION, true)
+                putExtra(EXTRA_NOTE_ID, mNote?.id.toString())
             }
             context.startActivity(intent)
         }
@@ -37,11 +46,14 @@ class NoteAdapter(private val mNotes: List<Note>) : RecyclerView.Adapter<NoteAda
         position: Int
     ) {
         val note = mNotes[position]
+        holder.setNote(note)
+        val noteTitle = holder.itemView.findViewById<TextView>(R.id.tv_note_title)
+        val container = holder.itemView.findViewById<LinearLayout>(R.id.ll_note_list_item)
+        noteTitle.text = note.title
 
-        /*val noteTitle = if (note.title.isEmpty()) {
-            field_not_be_empty_error
-        }*/
-        holder.mViewBinding.tvNoteTitle.text = note.title
+        container.setOnClickListener {
+            holder.onClick(it)
+        }
     }
 
     override fun getItemCount(): Int = mNotes.size

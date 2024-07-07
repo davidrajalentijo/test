@@ -1,6 +1,7 @@
 package com.devskiller.notepadplus
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.AttributeSet
 import android.view.Menu
@@ -16,15 +17,35 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(ActivityMainBinding.inflate(layoutInflater).root)
 
+        checkViewToShow()
     }
 
-    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
-        showWelcomeFragment()
-        return super.onCreateView(name, context, attrs)
+    override fun onResume() {
+        super.onResume()
+       checkViewToShow()
     }
+
+    private fun checkViewToShow() {
+        if (NoteLab.notes.isEmpty()) {
+            showWelcomeFragment()
+        } else {
+            showNoteListFragment()
+        }
+    }
+
     private fun showWelcomeFragment() {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.container, WelcomeFragment.newInstance())
+        val fragment: WelcomeFragment = WelcomeFragment.newInstance()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fl_fragment_container, fragment)
+            .commit()
+    }
+
+    private fun showNoteListFragment() {
+        val fragment: NoteListFragment = NoteListFragment.newInstance()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fl_fragment_container, fragment)
             .commit()
     }
 
@@ -38,10 +59,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.create_note -> {
-            // START YOUR CHANGE
-            // END YOUR CHANGE
+            goToCreateNote()
             true
         }
+
         else -> super.onOptionsItemSelected(item)
+    }
+
+    private fun goToCreateNote() {
+        val intent = Intent(this, ChangeNoteActivity::class.java)
+        startActivity(intent)
     }
 }
