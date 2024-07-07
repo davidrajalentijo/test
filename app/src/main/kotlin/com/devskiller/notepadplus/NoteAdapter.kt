@@ -33,5 +33,5 @@ class NoteAdapter(private val mNotes: List<Note>) : RecyclerView.Adapter<NoteAda
         holder.tv_note_title.text = note.title
     }
 
-    override fun getItemCount(): Int = m.size
+    override fun getItemCount(): Int = mNotes.size
 }
