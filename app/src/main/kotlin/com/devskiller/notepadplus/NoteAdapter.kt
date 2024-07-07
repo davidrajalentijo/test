@@ -29,6 +29,8 @@ class NoteAdapter(private val mNotes: List<Note>) : RecyclerView.Adapter<NoteAda
         holder: NoteHolder,
         position: Int
     ) {
+        val note = mNotes[position]
+        holder.
         // START YOUR CHANGE
         // END YOUR CHANGE
     }
