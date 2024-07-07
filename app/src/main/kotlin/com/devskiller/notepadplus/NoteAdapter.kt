@@ -18,7 +18,12 @@ class NoteAdapter(private val mNotes: List<Note>) : RecyclerView.Adapter<NoteAda
         override fun onClick(view: View) {
             val context = view.context
             val intent = Intent(context, ChangeNoteActivity::class.java)
-            intent.putExtra("note", mNote)
+            intent.apply {
+
+            }
+            intent.putExtra("id", mNote?.id)
+            intent.putExtra("title", mNote?.title)
+            intent.putExtra("description", mNote?.description)
             context.startActivity(intent)
         }
     }
