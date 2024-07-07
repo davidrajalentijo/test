@@ -1,5 +1,6 @@
 package com.devskiller.notepadplus
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,8 +16,10 @@ class NoteAdapter(private val mNotes: List<Note>) : RecyclerView.Adapter<NoteAda
         private var mNote: Note? = null
 
         override fun onClick(view: View) {
-            // START YOUR CHANGE
-            // END YOUR CHANGE
+            val context = view.context
+            val intent = Intent(context, ChangeNoteActivity::class.java)
+            intent.putExtra("note", mNote)
+            context.startActivity(intent)
         }
     }
 
