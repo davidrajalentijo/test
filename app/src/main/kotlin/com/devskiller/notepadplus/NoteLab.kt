@@ -14,12 +14,12 @@ object NoteLab {
         mNotes.add(note)
     }
 
-    fun updateNote(uuid: UUID) {
+    fun updateNote(newNote: Note) {
         mNotes.firstOrNull { note ->
-            note.id == uuid
+            note.id == newNote.id
         }?.let { note ->
             mNotes.remove(note)
-            mNotes.add(note)
+            mNotes.add(newNote)
         }
     }
 

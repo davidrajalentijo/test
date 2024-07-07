@@ -16,3 +16,9 @@ Implement or rewrite the following functionalities:
 
 ## Note
 Please be careful when editing `build.gradle` in your project. This task as it is doesn’t require any changes to it. It is generally ok to add new dependencies but changing or removing existing dependencies or configuration can cause the project and verification tests to not function in the expected way and give a unreliable score.
+
+
+## Test
+
+The test where moved to androidTest to solve some errors about version of gradle and libraries.
+

@@ -12,8 +12,8 @@ class ChangeNoteActivity : AppCompatActivity() {
 
     companion object {
 
-        private const val EXTRA_NOTE_ID = "com.devskiller.intent.note_id"
-        private const val EXTRA_EDIT_NOTE_ACTION = "com.devskiller.intent.edit_note_action"
+        const val EXTRA_NOTE_ID = "com.devskiller.intent.note_id"
+        const val EXTRA_EDIT_NOTE_ACTION = "com.devskiller.intent.edit_note_action"
 
         fun newIntent(
             context: Context,
@@ -68,7 +68,7 @@ class ChangeNoteActivity : AppCompatActivity() {
         note?.let {
             it.title = getNoteTitle(viewBinding)
             it.description = getNoteDescription(viewBinding)
-            NoteLab.updateNote(it.id)
+            NoteLab.updateNote(Note(id = it.id, title = it.title, description = it.description))
         }
 
         finish()

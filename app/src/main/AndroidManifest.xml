@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Notepad">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:exported="true">
 
             <intent-filter>
 
@@ -23,7 +23,7 @@
 
         </activity>
 
-        <activity android:name=".ChangeNoteActivity" />
+        <activity android:name=".ChangeNoteActivity" android:exported="true"/>
 
     </application>
 
