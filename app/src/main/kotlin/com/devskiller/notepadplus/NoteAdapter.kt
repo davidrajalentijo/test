@@ -30,7 +30,7 @@ class NoteAdapter(private val mNotes: List<Note>) : RecyclerView.Adapter<NoteAda
         position: Int
     ) {
         val note = mNotes[position]
-        holder.itemView.
+        holder.itemView.noteTitle.text = note.title
         holder.tv_note_title.text = note.title
     }
 
