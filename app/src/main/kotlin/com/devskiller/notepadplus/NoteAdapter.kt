@@ -30,14 +30,8 @@ class NoteAdapter(private val mNotes: List<Note>) : RecyclerView.Adapter<NoteAda
         position: Int
     ) {
         val note = mNotes[position]
-        holder.
-        // START YOUR CHANGE
-        // END YOUR CHANGE
+        holder.tv_note_title.text = note.title
     }
 
-    override fun getItemCount(): Int {
-        // START REFACTOR OF THIS METHOD
-        // END REFACTOR OF THIS METHOD
-        return 0
-    }
+    override fun getItemCount(): Int = m.size
 }
