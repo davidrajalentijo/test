@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(ActivityMainBinding.inflate(layoutInflater).root)
 
-        //showWelcomeFragment()
     }
 
     override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
