@@ -9,7 +9,7 @@ import com.devskiller.notepadplus.databinding.ViewNoteListItemBinding
 class NoteAdapter(private val mNotes: List<Note>) : RecyclerView.Adapter<NoteAdapter.NoteHolder>() {
 
     inner class NoteHolder(
-        private val mViewBinding: ViewNoteListItemBinding
+        val mViewBinding: ViewNoteListItemBinding
     ) : RecyclerView.ViewHolder(mViewBinding.root), View.OnClickListener {
 
         private var mNote: Note? = null
@@ -30,8 +30,7 @@ class NoteAdapter(private val mNotes: List<Note>) : RecyclerView.Adapter<NoteAda
         position: Int
     ) {
         val note = mNotes[position]
-        holder.itemView.noteTitle.text = note.title
-        holder.tv_note_title.text = note.title
+        holder.mViewBinding.tvNoteTitle.text = note.title
     }
 
     override fun getItemCount(): Int = mNotes.size
