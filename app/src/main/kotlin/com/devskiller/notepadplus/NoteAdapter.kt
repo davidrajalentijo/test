@@ -38,9 +38,9 @@ class NoteAdapter(private val mNotes: List<Note>) : RecyclerView.Adapter<NoteAda
     ) {
         val note = mNotes[position]
 
-        val noteTitle = if (note.title.isEmpty()) {
+        /*val noteTitle = if (note.title.isEmpty()) {
             field_not_be_empty_error
-        }
+        }*/
         holder.mViewBinding.tvNoteTitle.text = note.title
     }
 
