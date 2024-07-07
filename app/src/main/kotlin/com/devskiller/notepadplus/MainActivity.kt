@@ -1,8 +1,11 @@
 package com.devskiller.notepadplus
 
+import android.content.Context
 import android.os.Bundle
+import android.util.AttributeSet
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.devskiller.notepadplus.databinding.ActivityMainBinding
 
@@ -13,9 +16,13 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(ActivityMainBinding.inflate(layoutInflater).root)
 
-        showWelcomeFragment()
+        //showWelcomeFragment()
     }
 
+    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
+        showWelcomeFragment()
+        return super.onCreateView(name, context, attrs)
+    }
     private fun showWelcomeFragment() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.container, WelcomeFragment.newInstance())
