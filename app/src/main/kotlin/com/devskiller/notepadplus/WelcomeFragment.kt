@@ -20,7 +20,6 @@ class WelcomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_welcome, container, false)
-
         val welcomeMessage = view.findViewById<TextView>(R.id.tv_welcome)
         welcomeMessage.text = getString(R.string.welcome_message)
         return view
