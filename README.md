@@ -22,3 +22,6 @@ Please be careful when editing `build.gradle` in your project. This task as it i
 
 The test where moved to androidTest to solve some errors about version of gradle and libraries.
 
+
+[notes.webm](https://github.com/davidrajalentijo/test/assets/6725999/58ea2537-4ac7-4e36-b4f1-32e75873c14b)
+
